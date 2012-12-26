@@ -44,13 +44,13 @@ public class SceneArctic extends C2dStage implements Scene {
 		while(itr.hasNext()){
 			Actor actor = itr.next();
 			if(actor instanceof Umbrella){
-				Umbrella.$free(Umbrella.class.cast(actor));
+				Umbrella.$free((Umbrella)(actor));
 			}else if(actor instanceof Ice){
-				Ice.$free(Ice.class.cast(actor));
+				Ice.$free((Ice)(actor));
 			}else if(actor instanceof Box){
-				Box.$free(Box.class.cast(actor));
+				Box.$free((Box)(actor));
 			}else if(actor instanceof Plane){
-				Plane.$free(Plane.class.cast(actor));
+				Plane.$free((Plane)(actor));
 			}
 		}
 		

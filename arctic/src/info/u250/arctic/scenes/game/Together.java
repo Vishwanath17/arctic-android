@@ -148,7 +148,7 @@ public class Together extends Group {
 		
 		
 		final ParticleEffect effect = new ParticleEffect();
-		effect.load(Gdx.files.internal("e.p"), Gdx.files.internal(""));
+		effect.load(Gdx.files.internal("data/e.p"), Gdx.files.internal("data/"));
 		pSmoke = effect.findEmitter("smoke");
 		pFire  = effect.findEmitter("fire");
 		pExplose = effect.findEmitter("explose");

@@ -26,11 +26,11 @@ public class Arctic extends Engine {
 			@Override
 			public EngineOptions onSetupEngine() {
 				final EngineOptions opt = new EngineOptions(new String[]{
-						"arctic.atlas",
-						"font.fnt",
-						"sounds",
-						"musics",
-						"skin/uiskin.json"
+						"data/arctic.atlas",
+						"data/font.fnt",
+						"data/sounds",
+						"data/musics",
+						"data/skin/uiskin.json"
 				},800,480);
 				opt.useGL20 = false;
 				opt.debug = false;
@@ -40,21 +40,21 @@ public class Arctic extends Engine {
 			
 			@Override
 			public void onResourcesRegister(AliasResourceManager<String> reg) {
-				reg.textureAtlas("RES", "arctic.atlas");
+				reg.textureAtlas("RES", "data/arctic.atlas");
 				
-				reg.font("Font", "font.fnt");
+				reg.font("Font", "data/font.fnt");
 				
-				reg.music("MusicBg", "musics/bg.mp3");
-				reg.music("MusicExplorer", "musics/explorer.mp3");
+				reg.music("MusicBg", "data/musics/bg.mp3");
+				reg.music("MusicExplorer", "data/musics/explorer.mp3");
 				
-				reg.sound("SoundUp1", "sounds/up.mp3");
-				reg.sound("SoundUp2", "sounds/up2.mp3");
-				reg.sound("SoundDie", "sounds/die.mp3");
-				reg.sound("SoundEat", "sounds/eat.mp3");
-				reg.sound("SoundDown", "sounds/down.mp3");
-				reg.sound("SoundPlane", "sounds/plane.wav");
+				reg.sound("SoundUp1", "data/sounds/up.mp3");
+				reg.sound("SoundUp2", "data/sounds/up2.mp3");
+				reg.sound("SoundDie", "data/sounds/die.mp3");
+				reg.sound("SoundEat", "data/sounds/eat.mp3");
+				reg.sound("SoundDown", "data/sounds/down.mp3");
+				reg.sound("SoundPlane", "data/sounds/plane.wav");
 				
-				reg.skin("Skin", "skin/uiskin.json");
+				reg.skin("Skin", "data/skin/uiskin.json");
 				
 			}
 			

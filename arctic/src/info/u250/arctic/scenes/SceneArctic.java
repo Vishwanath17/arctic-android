@@ -16,7 +16,6 @@ import info.u250.c2d.graphic.AdvanceSprite;
 import info.u250.c2d.graphic.C2dStage;
 import info.u250.c2d.graphic.parallax.ParallaxGroup;
 import info.u250.c2d.graphic.parallax.ParallaxLayer;
-import info.u250.c2d.graphic.parallax.SpriteParallaxLayerDrawable;
 
 import java.util.Iterator;
 
@@ -29,6 +28,8 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 
 public class SceneArctic extends C2dStage implements Scene {
 	final ParallaxGroup _pbg ;
@@ -79,11 +80,12 @@ public class SceneArctic extends C2dStage implements Scene {
 	public SceneArctic(){
 		final TextureAtlas atlas = Engine.resource("RES");
 		
-		_pbg = new ParallaxGroup(this.getWidth(), this.getHeight() , new Vector2(), false);
-		_pbg.add(new ParallaxLayer("bg", new SpriteParallaxLayerDrawable(new AdvanceSprite(atlas.findRegion("bg"))),
-				new Vector2(0,0), new Vector2(), -1, -1));
-		_pbg.add(new ParallaxLayer("movebg", new SpriteParallaxLayerDrawable(new AdvanceSprite(atlas.findRegion("movebg"))),
-				new Vector2(1,0), new Vector2(0,1000), -1, -1,new Vector2(0,120)));
+		_pbg = new ParallaxGroup(this.getWidth(), this.getHeight() , new Vector2());
+		_pbg.addActor(new ParallaxLayer(_pbg, new Image(new SpriteDrawable(new AdvanceSprite(atlas.findRegion("bg")))),
+				new Vector2(0,0), new Vector2(),new Vector2()));
+		_pbg.addActor(new ParallaxLayer(_pbg, new Image(new SpriteDrawable(new AdvanceSprite(atlas.findRegion("movebg")))),
+				new Vector2(1,0), new Vector2(0,1000), new Vector2(0,120)));
+		
 		_pbg.setSpeed(-(Values.Speed-30), 0);
 		
 		_together = new Together();
@@ -263,8 +265,10 @@ public class SceneArctic extends C2dStage implements Scene {
 				this.addActor(plane);
 			}	
 		}
-		
-		this._pbg.render(delta);
+		_pbg.act(delta);
+		Engine.getSpriteBatch().begin();
+		_pbg.draw(Engine.getSpriteBatch(), 1);
+		Engine.getSpriteBatch().end();
 		this.act(delta);
 		this.draw();
 		
